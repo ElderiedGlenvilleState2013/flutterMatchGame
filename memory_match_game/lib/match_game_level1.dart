@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_match_game/items_to_match.dart';
 
 class MatchLevel1 extends StatefulWidget {
 
@@ -12,6 +13,14 @@ class _MatchLevel1State extends State<MatchLevel1> {
   int _currentLevel = 0;
   bool isAMatch = false;
   bool isSelected = false;
+  List<MatchingItems> items = [
+    MatchingItems(icons: Icon(Icons.thumb_up), selectedNum: 1 ),
+    MatchingItems(icons: Icon(Icons.thumb_down), selectedNum: 2 ),
+    MatchingItems(icons: Icon(Icons.map), selectedNum: 3 ),
+    MatchingItems(icons: Icon(Icons.thumb_up), selectedNum: 1 ),
+    MatchingItems(icons: Icon(Icons.thumb_down), selectedNum: 2 ),
+    MatchingItems(icons: Icon(Icons.map), selectedNum: 3 )
+  ];
 
 
   @override
@@ -58,13 +67,15 @@ class _MatchLevel1State extends State<MatchLevel1> {
             child: Container(
               width: 160.0,
               color: Colors.red,
-              child: isSelected ? Icon(Icons.thumb_up) : Container(),
+              child: isSelected ? items[0].icons : Container(),
             ),
           ),
+          isAMatch ? Container() :
           Container(
             width: 160.0,
             color: Colors.blue,
           ),
+          isAMatch ? Container() :
           Container(
             width: 160.0,
             color: Colors.green,
@@ -75,10 +86,13 @@ class _MatchLevel1State extends State<MatchLevel1> {
             color: Colors.yellow,
             child: isSelected ? Icon(Icons.thumb_up) : Container(),
           ),
+          isAMatch ? Container() :
           Container(
             width: 160.0,
             color: Colors.orange,
-          ),Container(
+          ),
+          isAMatch ? Container() :
+          Container(
             width: 160.0,
             color: Colors.purple,
           ),
